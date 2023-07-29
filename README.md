@@ -1,6 +1,6 @@
  0<p align="center">
-<a href=" https://github.com/miow7083/Ladybug-public">
-    <img src=" https://i.pinimg.com/564x/db/a7/df/dba7dfd6bda11a35818394240c320fc9.jpg">
+<a href="https://github.com/miow7083/Ladybug-public">
+    <img src="https://i.pinimg.com/564x/db/a7/df/dba7dfd6bda11a35818394240c320fc9.jpg">
   </a>
 
 <h1 align="center"> Atlas MD
