@@ -16,15 +16,15 @@
 <br>
 
 <p align="center">
-  <a href="https://github.com/FantoX001/Atlas-MD/fork">
+  <a href="https://github.com/miow7083/Ladybug-public/fork">
     <img src="https://img.shields.io/github/forks/FantoX001/Atlas-MD?label=Fork&style=social">
     
     
-  <a href="https://github.com/FantoX001/Atlas-MD/stargazers">
+  <a href="https://github.com/miow7083/Ladybug-public/stargazers">
     <img src="https://img.shields.io/github/stars/FantoX001/Atlas-MD?style=social">
   </a>
 <p align="center">
-<a href="https://github.com/FantoX001/Atlas-MD"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FFantoX001%2FAtlas-MD&count_bg=%23FFA305&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=People+Visited&edge_flat=false)](https://hits.seeyoufarm.com" width="150px" /></a>
+<a href="hhttps://github.com/miow7083/Ladybug-public"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FFantoX001%2FAtlas-MD&count_bg=%23FFA305&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=People+Visited&edge_flat=false)](https://hits.seeyoufarm.com" width="150px" /></a>
 </p>
 
 
@@ -32,7 +32,7 @@
 <p align="center">
 <a href="https://github.com/7thRA-ONE"><img title="Owner" src="https://img.shields.io/badge/Owner-RAONE-white.svg?style=for-the-badge&logo=github" width="170px"></a>
 
- <a href="https://github.com/FantoX001/Atlas-MD/blob/main/LICENSE.md">
+ <a href="https://github.com/miow7083/Ladybug-public/blob/main/LICENSE.md">
   
 <img src='https://img.shields.io/github/license/github.com/7thRA-ONE?color=%231e81b0&style=for-the-badge' width="114px">
 
