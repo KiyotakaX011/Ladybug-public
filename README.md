@@ -226,7 +226,7 @@ TENOR_API_KEY | Your tenor API key if you have. Or use this public one: `AIzaSyC
 - After it's deployed an webpage should appear just put your Previously copied `Session ID` and click on `Get QR`.
 - Scan the QR from WhatsApp ---> Linked devices ---> Link a device.
 - After connecting come back to Repl.it and copy that Website (Webview) link from Repl.it.
-- Next create a [UptimeRobot](https://uptimerobot.com/?rid=40f9e46fb079d4) account and add that copied lin kas an `HTTPS` monitor in UptimeRobot.
+- Next create a [UptimeRobot](https://uptimerobot.com/?rid=ccbc120b7f9058) account and add that copied lin kas an `HTTPS` monitor in UptimeRobot.
 - UptimeRobot will prevent Repl.it's auto sleep.
 - If you are having issues follow [Repl.it Deploy Tutorial](https://youtu.be/R-_DU73UH8Q).
       
