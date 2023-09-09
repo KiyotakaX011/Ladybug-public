@@ -1,0 +1,207 @@
+const eco = require('discord-mongoose-economy');
+const TicTacToe = require('../System/tictactoe.js');
+const { parseMention } = require('../System/Function2.js');
+
+// Initialize the game object to store Tic-Tac-Toe rooms
+const game = {};
+
+// Define merged commands and their aliases
+const mergedCommands = ['delttt', 'ttt'];
+
+const commands = {
+  ttc: 'ttt',
+  ttt: 'ttt',
+  tictactoe: 'ttt',
+  delttc: 'delttt',
+  delttt: 'delttt',
+};
+
+module.exports = {
+  name: 'tictactoe',
+  alias: [...mergedCommands],
+  uniquecommands: Object.values(commands),
+  description: 'All picture related commands',
+  start: async (Atlas, m, { inputCMD, text, doReact, prefix, pushName }) => {
+    try {
+      switch (commands[inputCMD]) {
+        case 'ttt': {
+          if (!m.isGroup) {
+            Atlas.sendMessage(m.from, { text: 'This command is only for groups.' }, { quoted: m });
+            return;
+          }
+
+          if (Object.values(game).find((room) => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))) {
+            m.reply('You are still in the game');
+            return;
+          }
+
+          let room = Object.values(game).find((room) => room.state === 'WAITING' && (text ? room.name === text : true));
+
+          if (room) {
+            m.reply('Partners found!');
+            room.o = m.chat;
+            room.game.playerO = m.sender;
+            room.state = 'PLAYING';
+
+            let arr = room.game.render().map((v) => {
+              return {
+                X: '❌',
+                O: '⭕',
+                1: '1️⃣',
+                2: '2️⃣',
+                3: '3️⃣',
+                4: '4️⃣',
+                5: '5️⃣',
+                6: '6️⃣',
+                7: '7️⃣',
+                8: '8️⃣',
+                9: '9️⃣',
+              }[v];
+            });
+
+            let str = `Room ID: ${room.id}
+
+${arr.slice(0, 3).join('')}
+${arr.slice(3, 6).join('')}
+${arr.slice(6).join('')}
+
+Wait @${room.game.currentTurn.split('@')[0]}
+
+Type *give up* to surrender and admit defeat`;
+
+            if (room.x !== room.o) {
+              await Atlas.sendMessage(m, { text: room.x, str }, { mentions: parseMention(str) });
+            }
+
+            await Atlas.sendMessage(m, { text: room.o, str }, { mentions: parseMention(str) });
+          } else {
+            room = {
+              id: 'tictactoe-' + (+new Date),
+              x: m.chat,
+              o: '',
+              game: new TicTacToe(m.sender, 'o'),
+              state: 'WAITING',
+            };
+
+            if (text) {
+              room.name = text;
+            }
+
+            m.reply('Waiting for a partner');
+            game[room.id] = room;
+          }
+          break;
+        }
+
+        case 'delttc':
+        case 'delttt': {
+          try {
+            if (game) {
+              delete game;
+              Atlas.sendMessage(m.from, { text: `Successfully deleted TicTacToe session` }, m);
+            } else if (!game) {
+              Atlas.sendMessage(m.from, { text: `Session TicTacToe🎮 does not exist` }, m);
+            } else {
+              Atlas.sendMessage(m.from, { text: `Damaged` }, m);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+          break;
+        }
+
+        default:
+          // Handle game moves here
+          let room = Object.values(game).find((room) => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state === 'PLAYING');
+
+          if (room) {
+            let ok;
+            let isWin = false;
+            let isTie = false;
+            let isSurrender = false;
+
+            if (!/^([1-9]|(me)?give up|surr?ender|off|skip)$/i.test(m.text)) {
+              return;
+            }
+
+            isSurrender = !/^[1-9]$/.test(m.text);
+
+            if (m.sender !== room.game.currentTurn) {
+              if (!isSurrender) {
+                return false;
+              }
+            }
+
+            if (!isSurrender && (ok = room.game.turn(m.sender === room.game.playerO, parseInt(m.text) - 1)) <= 0) {
+              m.reply({
+                '-3': 'Game has ended',
+                '-2': 'Invalid',
+                '-1': 'Invalid Position',
+                0: 'Invalid Position',
+              }[ok]);
+
+              return false;
+            }
+
+            if (m.sender === room.game.winner) {
+              isWin = true;
+            } else if (room.game.board === 511) {
+              isTie = true;
+            }
+
+            let arr = room.game.render().map((v) => {
+              return {
+                X: '❌',
+                O: '⭕',
+                1: '1️⃣',
+                2: '2️⃣',
+                3: '3️⃣',
+                4: '4️⃣',
+                5: '5️⃣',
+                6: '6️⃣',
+                7: '7️⃣',
+                8: '8️⃣',
+                9: '9️⃣',
+              }[v];
+            });
+
+            if (isSurrender) {
+              room.game._currentTurn = m.sender === room.game.playerX;
+              isWin = true;
+            }
+
+            let winner = isSurrender ? room.game.currentTurn : room.game.winner;
+
+            let str = `Room ID: ${room.id}
+
+${arr.slice(0, 3).join('')}
+${arr.slice(3, 6).join('')}
+${arr.slice(6).join('')}
+
+${isWin ? `@${winner.split('@')[0]} Win!` : isTie ? 'Game over' : `Turn ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
+❌: @${room.game.playerX.split('@')[0]}
+⭕: @${room.game.playerO.split('@')[0]}
+
+Type *give up* to surrender and admit defeat`;
+
+            if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat) {
+              room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat;
+            }
+
+            if (room.x !== room.o) {
+              await Atlas.sendMessage({ text: room.x, str }, { mentions: parseMention(str) }, m);
+            }
+
+            await Atlas.sendMessage({ text: room.o, str }, { mentions: parseMention(str) }, m);
+
+            if (isTie || isWin) {
+              delete game[room.id];
+            }
+          }
+          break;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  },
+};

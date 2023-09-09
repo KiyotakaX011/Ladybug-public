@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <title>Atlas V3</title>
+  <!-- Adding favicon -->
+  <link rel="shortcut icon" href="TA.jpg" type="image/x-icon" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #333;
+      color: #fff;
+    }
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    #bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .screen {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+    .screen__content {
+      text-align: center;
+    }
+    .main-logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 20px auto;
+      display: block;
+    }
+    .txt {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .login__input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      background-color: #444;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+    }
+    .login__submit {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      background-color: #00adef;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .login__submit:hover {
+      background-color: #008bbf;
+    }
+    .follow_me {
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    .my_icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .icon_git {
+      margin: 0 5px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 26px;
+    }
+    .social-icons {
+      margin-top: 20px;
+    }
+    .social-icons a {
+      margin: 0 5px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="video-bg">
+    <video id="bg-video" autoplay loop muted>
+      <source src="https://graph.org/file/57837b3c2721ea10d2345.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="container">
+    <div class="screen">
+      <div class="screen__content">
+        <form class="login" action="/qr" method="get" target="_blank">
+          <div class="login__field">
+            <img class="main-logo" src="TA.png" alt="logo" />
+          </div>
+          <div class="login__field">
+            <h2 class="txt">LADYBUGV-1</h2>
+          </div>
+          <div class="login__field">
+            <input
+              type="text"
+              class="login__input"
+              placeholder="Enter Your Session ID"
+              id="session"
+              name="session"
+            />
+          </div>
+
+          <button class="button login__submit">
+            <span class="button__text">Verify</span>
+          </button>
+          <p class="follow_me">Please Support Me on</p>
+          <div class="my_icons">
+            <a class="icon_git" href="https://www.github.com/FantoX001" target="_blank">
+              <i class="fa fa-github"></i>
+            </a>
+            <a class="icon_git" href="https://www.youtube.com/@fantoxgaming" target="_blank">
+              <i class="fa fa-youtube-play"></i>
+            </a>
+          </div>
+        </form>
+        <div class="social-login">
+          <div class="social-icons">
+            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

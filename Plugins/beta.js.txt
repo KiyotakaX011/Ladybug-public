@@ -1,0 +1,61 @@
+/*const fs = require("fs");
+const Jimp = require("jimp");
+const moment = require("moment-timezone");
+const {
+  setWelcome,
+  checkWelcome,
+  delWelcome,
+  setAntilink,
+  checkAntilink,
+  delAntilink,
+  setGroupChatbot,
+  checkGroupChatbot,
+  delGroupChatbot,
+  setAntiword,
+  checkAntiword,
+  delAntiword,
+  setAutoreact,
+  checkAutoreact,
+  delAutoreact,
+} = require("../System/MongoDB/MongoDb_Core");
+
+let mergedCommands = [
+  "add",
+  "invite",
+];
+
+module.exports = {
+  name: "beta",
+  alias: [...mergedCommands],
+  uniquecommands: [
+    "add",
+    "invite",
+  ],
+  description: "All Audio Editing Commands",
+  start: async (
+    Atlas,
+    m,
+    {
+      inputCMD,
+      text,
+      prefix,
+      doReact,
+      args,
+      itsMe,
+      participants,
+      metadata,
+      mentionByTag,
+      mime,
+      isMedia,
+      quoted,
+      botNumber,
+      isBotAdmin,
+      groupAdmin,
+      isAdmin,
+      isCreator,
+    }
+  ) => {
+    switch (inputCMD) {
+       
+};
+ */
