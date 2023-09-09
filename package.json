@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/miow7083/Ladybug-public.git"
+    "url": "git+https://github.com/7thRA-ONE/Ladybug-public.git"
   },
   "keywords": [],
   "author": "☈A-ONE",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/miow7083/Ladybug-public/issues"
+    "url": "https://github.com/7thRA-ONE/Ladybug-public/issues"
   },
-  "homepage": "https://github.com/miow7083/Ladybug-public#readme",
+  "homepage": "https://github.com/7thRA-ONE/Ladybug-public#readme",
   "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
     "@fantox01/lyrics-scraper": "^1.0.1",
